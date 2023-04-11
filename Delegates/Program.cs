@@ -16,7 +16,7 @@ namespace Delegates
 
             Predicate<int> verificar = a => a % 2 == 0;
             Console.WriteLine(verificar(1));
-            
+
         /*
         Action<string> exibir = ExibirInformacao;
         exibir("Testando");
@@ -28,7 +28,6 @@ namespace Delegates
         Console.WriteLine(verificar(1));
         */
         }
-        
 
         static void ExibirInformacao(string informacao)
         {
@@ -39,7 +38,7 @@ namespace Delegates
         {
             Console.WriteLine($"Erro: {informacao}");
         }
-
+        
         static int Somar(int a, int b)
         {
             return a + b;
