@@ -16,6 +16,9 @@ namespace Where
 
         static void Main(string[] args)
         {
+            /*
+            //  Filtrando coleções com Where        
+
             // var resultado = produtos.Where(p => p.Preco < 5);
             // var resultado = produtos.Where(p => p.Categoria == "Cereais");
             var resultado = produtos.Where(p => p.Descricao.Contains("De") && p.Preco < 3);
@@ -24,6 +27,13 @@ namespace Where
             {
                 Console.WriteLine(r);
             }
+            */
+
+            var primeiro = produtos.First(p => p.Descricao.Contains("De"));
+            var ultimo = produtos.Last(p => p.Descricao.Contains("De"));
+            var arroz = produtos.Single(p => p.Descricao == "Arroz");
+
+            Console.WriteLine(primeiro);
         }
     }
 }
