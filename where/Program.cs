@@ -27,13 +27,45 @@ namespace Where
             {
                 Console.WriteLine(r);
             }
-            */
+            
+
+            // Recuperando um elemento: First, Single e Last
 
             var primeiro = produtos.First(p => p.Descricao.Contains("De"));
             var ultimo = produtos.Last(p => p.Descricao.Contains("De"));
             var arroz = produtos.Single(p => p.Descricao == "Arroz");
 
             Console.WriteLine(primeiro);
+            
+
+            // Limitando a quantidade de registros com Take 
+
+            var resultado = produtos.Take(2);
+
+            foreach(var r in resultado)
+            {
+                Console.WriteLine(r);
+            }
+            
+
+            // Avançando registros com o método Skip
+
+            var resultado = produtos.Skip(1);
+
+            foreach(var r in resultado)
+            {
+                Console.WriteLine(r);
+            }
+            */
+
+            // Ordenando o resultado: OrderBy e OrderByDescending / Ordenações secundárias: ThenBy e ThenByDescending   
+
+            var resultado = produtos.OrderBy(p => p.Categoria).ThenBy(p => p.Preco);
+
+            foreach(var r in resultado)
+            {
+                Console.WriteLine(r);
+            } 
         }
     }
 }
