@@ -60,12 +60,23 @@ namespace Where
 
             // Ordenando o resultado: OrderBy e OrderByDescending / Ordenações secundárias: ThenBy e ThenByDescending   
 
+            /*
             var resultado = produtos.OrderBy(p => p.Categoria).ThenBy(p => p.Preco);
 
             foreach(var r in resultado)
             {
                 Console.WriteLine(r);
             } 
+            */
+
+            // Mudando a forma do retorno com o méthodo Select
+
+            var resultado = produtos.Select(p => new { p.Descricao, PrecoComAcrescimo = p.Preco * 1.1m });
+
+            foreach (var p in resultado)
+            {
+                Console.WriteLine(p);        
+            }
         }
     }
 }
