@@ -71,11 +71,22 @@ namespace Where
 
             // Mudando a forma do retorno com o méthodo Select
 
+            /*
             var resultado = produtos.Select(p => new { p.Descricao, PrecoComAcrescimo = p.Preco * 1.1m });
 
             foreach (var p in resultado)
             {
                 Console.WriteLine(p);        
+            }
+            */
+
+            // Resultados distintos com Distinct
+            
+            var categorias = produtos.Select(p => p.Categoria).Distinct();
+
+            foreach (var c in categorias)
+            {
+                Console.WriteLine(c);
             }
         }
     }
