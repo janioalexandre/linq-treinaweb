@@ -81,13 +81,29 @@ namespace Where
             */
 
             // Resultados distintos com Distinct
-            
+
+            /*
             var categorias = produtos.Select(p => p.Categoria).Distinct();
 
             foreach (var c in categorias)
             {
                 Console.WriteLine(c);
             }
+            */
+
+            // Funções de agregação: Count, Max, Min, Sum, e Average
+
+            var quantidade = produtos.Count(p => p.Categoria == "Limpeza");
+            var maximo = produtos.Max(p => p.Preco);
+            var minimo = produtos.Min(p => p.Preco);
+            var soma = produtos.Sum(p => p.Preco);
+            var media = produtos.Average(p => p.Preco);
+
+            Console.WriteLine(quantidade);
+            Console.WriteLine(maximo);
+            Console.WriteLine(minimo);
+            Console.WriteLine(soma);
+            Console.WriteLine(media);
         }
     }
 }
