@@ -8,10 +8,16 @@ namespace Where
     {
         private static List<Produto> produtos = new List<Produto>
         {
-            new Produto { Descricao = "Arroz", Categoria = "Cereais", Preco = 4.89m },
-            new Produto { Descricao = "Feijão", Categoria = "Cereais", Preco = 8.19m },
-            new Produto { Descricao = "Detergente", Categoria = "Limpeza", Preco = 2.29m },
-            new Produto { Descricao = "Desinfetante", Categoria = "Limpeza", Preco = 3.99m }
+            new Produto { Nome = "Notebook", Categoria = "Informática", Preco = 8000 },
+            new Produto { Nome = "Monitor", Categoria = "Informática", Preco = 1000 },
+            new Produto { Nome = "Cama", Categoria = "Moveis", Preco = 2000 },
+            new Produto { Nome = "Armario", Categoria = "Moveis", Preco = 3000 }
+        };
+
+        private static List<Promocao> promocoes = new List<Promocao> 
+        {
+            new Promocao { Categoria = "Informática", Desconto = 10 },
+            new Promocao { Categoria = "Moveis", Desconto = 20 }
         };
 
         static void Main(string[] args)
@@ -93,6 +99,7 @@ namespace Where
 
             // Funções de agregação: Count, Max, Min, Sum, e Average
 
+            /*
             var quantidade = produtos.Count(p => p.Categoria == "Limpeza");
             var maximo = produtos.Max(p => p.Preco);
             var minimo = produtos.Min(p => p.Preco);
@@ -104,6 +111,22 @@ namespace Where
             Console.WriteLine(minimo);
             Console.WriteLine(soma);
             Console.WriteLine(media);
+            */
+
+            // Agrupando resultados com Join 
+            var resultado = produtos.Join(promocoes,
+                                          produto => produto.Categoria,
+                                          promocao => promocao.Categoria,
+                                          (produto, promocao) => new {
+                                            produto.Nome,
+                                            produto.Categoria,
+                                            PrecoComDesconto = produto.Preco * (1 - (promocao.Desconto / 100))
+                                          });
+
+            foreach (var p in resultado)
+            {
+                Console.WriteLine($" { p.Nome } - { p.Categoria } - { p.PrecoComDesconto }");
+            }                              
         }
     }
 }
